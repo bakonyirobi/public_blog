@@ -1,0 +1,13 @@
+{% extends 'default.html' %}
+
+{% block content %}
+<div class="create-article">
+    <h2>Edit an article</h2>
+    <form class="site-form" action="{% url 'articles:edit' slug=article.slug %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Update">
+    </form>
+</div>
+<script src="/static/slugify.js"></script>
+{% endblock %}

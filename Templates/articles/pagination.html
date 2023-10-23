@@ -1,0 +1,33 @@
+{% if items.has_other_pages %}
+    <div class="col-6 offset-3 text-center pagination-set">
+        <nav aria-label="">
+            <ul class="pagination justify-content-center">
+                {% if items.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1">&laquo First</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ items.previous_page_number }}"><<</a>
+                    </li>
+                {% endif %}
+                {% for i in page_range %}
+                    {% if items.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link" href="">{{i}}<span class="sr-only"></span></a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{i}}">{{i}}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                {% if items.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" aria-label="Next" href="?page={{items.next_page_number}}">>></a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="?page={{ items.paginator.num_pages }}">Last &raquo</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+{% endif %}

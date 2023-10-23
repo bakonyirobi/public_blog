@@ -1,0 +1,23 @@
+{% extends 'default.html' %}
+
+{% block content %}
+{% if article.author.id == user.id %}
+    <nav class="UpdateArticle">
+        <li><a href="{% url 'articles:edit' slug=article.slug %}" class="ArticleEdit">Edit</a></li>
+        <li><a href="{% url 'articles:delete' slug=article.slug %}" class="ArticleDelete">Delete</a></li>
+    </nav>
+{% endif %}
+<div class="article-details">
+    <div class="article">
+        <img src="{{ article.thumb.url }}"/>
+        <h2>{{ article.title }}</h2>
+        <div class="infos">
+            <p>Director: {{ article.director }}</p>
+            <p>Protagonist(s): {{ article.protagonist }}</p>
+        </div>
+        <p>{{ article.body }}</p>
+        <p class="author">Created by <br>{{ article.author }}</p>
+        <p>{{ article.date }}</p>
+    </div>
+</div>
+{% endblock %}

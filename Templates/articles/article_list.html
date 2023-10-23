@@ -1,0 +1,19 @@
+{% extends 'default.html' %}
+
+{% block content %}
+    <h1>Article list</h1>
+    <div class="articles_list">
+        {% for article in items %}
+        <div class="article_list">
+            <a href="{% url 'articles:details' slug=article.slug %}">
+            <h2>{{ article.title }}</h2>
+            <p><img src="{{ article.thumb.url }}"/></p>
+            <p>{{ article.short_desc }}</p></a>
+            <p>{{ article.author }}, {{ article.date }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    <div>
+        {% include 'articles/pagination.html' %}
+    </div>
+{% endblock %}
