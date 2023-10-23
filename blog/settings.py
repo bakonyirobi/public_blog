@@ -14,7 +14,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7#!k95*otsnp9+i@8d9f#d)j)(111@%4f8on1=afoaz-@(+75u'
+SECRET_KEY = '************'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -119,8 +119,8 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # STATIC_URL = '/static/'
 
-AWS_ACCESS_KEY_ID = 'AKIAZRUFPW4GEWEZE2V5'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = '********'
+AWS_SECRET_ACCESS_KEY = '*******************'
 AWS_STORAGE_BUCKET_NAME = 'moviefanblog-storage'
 AWS_S3_REGION_NAME = 'eu-north-1'
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
