@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" property="og:description" content="These articles are about movies and created by users.">
+        <meta name="keywords" content="seo, python, django, movies, articles, opinions, posts, users, actress, actor, hollywood, mainstream, film">
+        <meta name="author" content="Róbert László Bákonyi">
+        <title>Articles</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+        <!-- Google AdSense -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7400837623809186" crossorigin="anonymous"></script>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-CCTR5HC9N6"></script>
+        <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-CCTR5HC9N6');
+        </script>
+        <!-- Google Acceptable-Ads Message -->
+        <script async src="https://fundingchoicesmessages.google.com/i/pub-7400837623809186?ers=1" nonce="U9_oZS2rh9dFNf_s_hJPjw"></script><script nonce="U9_oZS2rh9dFNf_s_hJPjw">(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+    </head>
+    <body>
+        <header class="wrapper">
+            <h1><a href="{% url 'home' %}"><img alt="Movie Fan Blog Logo" title="Movie Fan Blog Logo" src="{% static 'logo5.png' %}" /></a></h1>
+            <nav class="create_logout_nav">
+                <ul>
+                    {% if user.is_authenticated %}
+                        <li>Hi, {{ user.username }}</li>
+                        <li><a href="{% url 'articles:create' %}" class="highlight">Create new article</a></li>
+                        <li>
+                            <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Logout</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                        <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+        <div class="wrapper">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

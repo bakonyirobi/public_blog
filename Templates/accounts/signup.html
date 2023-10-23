@@ -1,0 +1,12 @@
+{% extends 'default.html' %}
+
+{% block content %}
+    <h1>Signup</h1>
+    <form class="site-form" action="/accounts/signup/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <!-- Privacy Policy Link -->
+        <p>By signing up, you agree to our <a href="https://www.termsfeed.com/live/d0e2bb42-feca-4abe-8051-afccfe402f6a"><u>Privacy Policy</u></a>.</p>
+        <input type="submit" value="Signup">
+    </form>
+{% endblock %}
